@@ -1,28 +1,26 @@
 <script>
-	
+	let todos = [
+		{ name: 'Svelte', description: 'Testing Svelte' },
+		{ name: 'React', description: 'Testing React' },
+		{ name: 'Vue', description: 'Grow up to Middle level' }
+	]
 </script>
 
 <div class="wrapper">
 	<h1 class="text-center">To Do!</h1>
 
 	<div class="tasks">
-		<div class="tasks__item">
-			<div class="tasks__name">Task 1</div>
-			<div class="tasks__description">description</div>
-			<div class="tasks__action">
-				<button class="tasks__edit" type="button">Edit</button>
-				<button class="tasks__delete" type="button">Delete</button>
+		{#each todos as todo, i}
+			<div class="tasks__item">
+				<div class="tasks__number">{i + 1}</div>
+				<div class="tasks__name">{ todo.name }</div>
+				<div class="tasks__description">{ todo.description }</div>
+				<div class="tasks__action">
+					<button class="tasks__edit" type="button">Edit</button>
+					<button class="tasks__delete" type="button">Delete</button>
+				</div>
 			</div>
-		</div>
-
-		<div class="tasks__item">
-			<div class="tasks__name">Task 1</div>
-			<div class="tasks__description">description</div>
-			<div class="tasks__action">
-				<button class="tasks__edit" type="button">Edit</button>
-				<button class="tasks__delete" type="button">Delete</button>
-			</div>
-		</div>
+		{/each}
 
 		<div class="tasks__add_wrapper">
 			<button class="tasks__add">+</button>
@@ -39,7 +37,7 @@
 	h1 {
 		font-size: 3em;
 		font-weight: 200;
-		color: #3f3f3f
+		color: #3f3f3f;
 	}
 
 	.text-center {
@@ -48,7 +46,7 @@
 
 	.tasks {
 		max-width: 70%;
-		margin: auto;
+		margin: 3rem auto 0;
 	}
 
 	.tasks__item {
@@ -62,7 +60,11 @@
 
 	.tasks__name {
 		font-weight: bold;
-	}	
+	}
+
+	.tasks__description {
+		flex-basis: 200px;
+	}
 
 	button {
 		margin: 0 5px;
@@ -104,5 +106,4 @@
 			background-color: #2828d8;
 		}
 	}
-
 </style>
