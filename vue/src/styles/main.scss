@@ -1,0 +1,115 @@
+.wrapper {
+    max-width: 980px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: 200;
+    color: #3f3f3f;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.tasks {
+    max-width: 70%;
+    margin: 3rem auto 0;
+}
+
+.tasks__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.329);
+}
+
+.tasks__name {
+    font-weight: bold;
+}
+
+.tasks__description {
+    flex-basis: 200px;
+}
+
+.tasks__action {
+    display: flex;
+}
+
+.tasks__save {
+    margin-right: 5px;
+}
+
+button {
+    margin: 0 5px;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 2px;
+    color: #fff;
+    transition: background .2s;
+    cursor: pointer;
+}
+
+.tasks__delete {
+    background-color: #ee5b5b;
+    &:hover {
+        background-color: #ec2f2f;
+    }
+}
+
+.tasks__edit {
+    background-color: #37d337;
+    &:hover {
+        background-color: #25af25;
+    }
+}
+
+.tasks__add_wrapper {
+    text-align: right;
+}
+
+.tasks__add {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 1.25rem;
+    background-color: #6f6fec;		
+    font-size: 1.25em;
+    padding: 0;
+    margin-top: 2rem;
+    outline: none;
+    &:hover {
+        background-color: #4a4ad4;
+    }
+}
+
+.tasks__adding {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px;
+    opacity: 0;
+    transition: .3s;
+    &.active {
+        opacity: 1;
+    }
+    input {
+        padding: 8px;
+        border-radius: 3px;
+        border: 1px solid rgba(204, 204, 204, 0.637);
+        margin-right: 15px;
+        font-size: 16px;
+        &:first-child {
+            flex-grow: 1;            
+        }
+        &:nth-child(2) {
+            flex-grow: 20;
+        }
+    }
+    a {
+        flex-grow: 1;
+        cursor: pointer;
+    }
+}
