@@ -72,10 +72,10 @@
 						<button class="tasks__edit" type="button" on:click="{showEditingInputs}">Edit</button>
 					{:else}
 						<div class="group">
-							<a href="#" class="tasks__save" title="save" on:click|preventDefault="{editTask}">
+							<a href="#edit" class="tasks__save" title="save" on:click|preventDefault="{editTask}">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path fill="green" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
 							</a>
-							<a href="#" class="tasks__cancel" title="cancel" on:click|preventDefault="{e => todo.editable = false}">
+							<a href="#cancel" class="tasks__cancel" title="cancel" on:click|preventDefault="{e => todo.editable = false}">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="red" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
 							</a>
 						</div>
@@ -92,7 +92,7 @@
 		<div class="tasks__adding" class:active="{ adding }" title="Add new task">
 			<input type="text" bind:value="{newTask.name}" placeholder="Name">
 			<input type="text" bind:value="{newTask.description}" placeholder="description">
-			<a href="#" on:click|preventDefault="{addTodo}">
+			<a href="#add" on:click|preventDefault="{addTodo}">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="blue"/><path d="M0 0h24v24H0z" fill="none"/></svg>
 			</a>
 		</div>
