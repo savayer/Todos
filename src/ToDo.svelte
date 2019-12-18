@@ -1,9 +1,23 @@
 <script>
+	let editing = false
 	let todos = [
 		{ name: 'Svelte', description: 'Testing Svelte' },
 		{ name: 'React', description: 'Testing React' },
 		{ name: 'Vue', description: 'Grow up to Middle level' }
 	]
+
+	const deleteTask = e => {
+		const index = +e.target.getAttribute('data-key')
+		if (confirm(`Delete ${todos[index].name} task?`)) {
+			/*Because Svelte's reactivity is triggered by assignments, using array methods like push and splice won't automatically cause updates. For example, clicking the button doesn't do anything.*/
+			todos.splice(index, 1)
+			todos = todos
+		}
+	}
+
+	const toggleEdit = () => {
+		editing = !editing
+	}
 </script>
 
 <div class="wrapper">
@@ -13,11 +27,11 @@
 		{#each todos as todo, i}
 			<div class="tasks__item">
 				<div class="tasks__number">{i + 1}</div>
-				<div class="tasks__name">{ todo.name }</div>
+				<div class="tasks__name" class:editable="{editing}" contenteditable="{editing}">{ todo.name }</div>
 				<div class="tasks__description">{ todo.description }</div>
 				<div class="tasks__action">
-					<button class="tasks__edit" type="button">Edit</button>
-					<button class="tasks__delete" type="button">Delete</button>
+					<button class="tasks__edit" type="button" on:click="{toggleEdit}">Edit</button>
+					<button class="tasks__delete" type="button" data-key="{i}" on:click="{deleteTask}">Delete</button>
 				</div>
 			</div>
 		{/each}
@@ -60,6 +74,10 @@
 
 	.tasks__name {
 		font-weight: bold;
+		&.editable {
+			outline: 1px solid rgba(48, 48, 214, 0.596);
+			padding: 2px 6px;
+		}
 	}
 
 	.tasks__description {
@@ -98,12 +116,12 @@
 		width: 2.5rem;
 		height: 2.5rem;
 		border-radius: 1.25rem;
-		background-color: #3939ee;		
+		background-color: #6f6fec;		
 		font-size: 1.25em;
 		padding: 0;
 		margin-top: 2rem;		
 		&:hover {
-			background-color: #2828d8;
+			background-color: #4a4ad4;
 		}
-	}
+	}	
 </style>
