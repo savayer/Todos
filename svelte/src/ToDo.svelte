@@ -12,7 +12,7 @@
 	let todos = [
 		{ name: 'Svelte', description: 'Testing Svelte', editable: false },
 		{ name: 'React', description: 'Testing React', editable: false },
-		{ name: 'Vue', description: 'Grow up to Middle level', editable: false }
+		{ name: 'Vue', description: 'Consolidate knowledge', editable: false }
 	]
 
 	const deleteTask = e => {
@@ -25,14 +25,14 @@
 	}
 	
 	const showEditingInputs = e => {
-		const index = +e.target.getAttribute('data-index')
+		const index = +e.target.closest('.tasks__action').getAttribute('data-index')
 		task = todos[index].name
 		description = todos[index].description
 		todos[index].editable = true
 	}
 
 	const editTask = e => {
-		const index = +e.target.getAttribute('data-index')
+		const index = +e.target.closest('.tasks__action').getAttribute('data-index')
 		todos[index].name = task
 		todos[index].description = description
 		todos[index].editable = false
@@ -67,12 +67,12 @@
 						<input type="text" bind:value="{description}">
 					{/if}
 				</div>
-				<div class="tasks__action">
+				<div class="tasks__action" data-index="{i}">
 					{#if !todo.editable}											
-						<button class="tasks__edit" type="button" data-index="{i}" on:click="{showEditingInputs}">Edit</button>
+						<button class="tasks__edit" type="button" on:click="{showEditingInputs}">Edit</button>
 					{:else}
 						<div class="group">
-							<a href="#" class="tasks__save" title="save" data-index="{i}" on:click|preventDefault="{editTask}">
+							<a href="#" class="tasks__save" title="save" on:click|preventDefault="{editTask}">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path fill="green" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
 							</a>
 							<a href="#" class="tasks__cancel" title="cancel" on:click|preventDefault="{e => todo.editable = false}">

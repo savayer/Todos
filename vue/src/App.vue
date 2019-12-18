@@ -56,7 +56,7 @@ export default {
             todos: [
                 { name: 'Svelte', description: 'Testing Svelte', editable: false },
                 { name: 'React', description: 'Testing React', editable: false },
-                { name: 'Vue', description: 'Grow up to Middle level', editable: false }
+                { name: 'Vue', description: 'Consolidate knowledge', editable: false }
             ],
             task: '',
             description: '',
